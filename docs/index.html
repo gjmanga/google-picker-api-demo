@@ -91,10 +91,10 @@
 
       // A simple callback implementation.
       function pickerCallback(data) {
-        var url = 'nothing';
-        var message = 'You picked:';
+        var message = '';
         var mangaAuthor = document.getElementById("mangaAuthor").value;
         var mangaName = document.getElementById("mangaName").value;
+        var mangaContentField = document.getElementById("mangaContent");
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var arr = data[google.picker.Response.DOCUMENTS];
           for (var i = 0, len = arr.length; i < len; i++) {
@@ -110,7 +110,7 @@
             message = message + thumbnail;
           }          
         }
-        document.getElementById('result').innerHTML = message;
+        mangaContentField.value = message;
       }
     </script>
   </head>
@@ -128,6 +128,10 @@
       <tr>
         <td rowspan="1">Name of author</td>
         <td><input type="text" id="mangaAuthor"></td>
+      </tr>
+      <tr>
+        <td rowspan="1">Post Content</td>
+        <td><textarea type="text" id="mangaContent"></textarea></td>
       </tr>
     </table>
     
