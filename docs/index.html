@@ -92,10 +92,14 @@
       // A simple callback implementation.
       function pickerCallback(data) {
         var url = 'nothing';
+        var message = 'You picked:';
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
-          var doc = JSON.stringify(data[google.picker.Response.DOCUMENTS][0], null, "  ");
+          var arr = data[google.picker.Response.DOCUMENTS];
+          for (var i = 0, len = arr.length; i < len; i++) {
+            var doc = JSON.stringify(arr[i], null, "  ");
+            message = message + doc;
+          }          
         }
-        var message = 'You picked: <br>' + doc;
         document.getElementById('result').innerHTML = message;
       }
     </script>
