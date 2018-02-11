@@ -93,6 +93,8 @@
       function pickerCallback(data) {
         var url = 'nothing';
         var message = 'You picked:';
+        var mangaAuthor = document.getElementById("mangaAuthor").value;
+        var mangaName = document.getElementById("mangaName").value;
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var arr = data[google.picker.Response.DOCUMENTS];
           for (var i = 0, len = arr.length; i < len; i++) {
@@ -103,7 +105,7 @@
               thumbnail = thumbnail.split("s32-c")[0]+"s1600/"+name;
             }
             if (thumbnail){
-              thumbnail = "<img src='"+thumbnail+"'>";
+              thumbnail = "<img src='"+thumbnail+"' alt='"+mangaAuthor+" - "+mangaName+"'>";
             }
             message = message + thumbnail;
           }          
@@ -119,7 +121,16 @@
         <td rowspan="1">Picasa(Google Photos)</td>
         <td><a href="#PHOTO_UPLOAD" id="PHOTO_UPLOAD"</a>Upload to Picasa Web Albums.</a></td>
       </tr>
+      <tr>
+        <td rowspan="1">Name of manga</td>
+        <td><input type="text" id="mangaName"></td>
+      </tr>
+      <tr>
+        <td rowspan="1">Name of author</td>
+        <td><input type="text" id="mangaAuthor"></td>
+      </tr>
     </table>
+    
     
     <pre id="result"></pre>
 
