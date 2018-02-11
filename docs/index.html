@@ -98,7 +98,7 @@
           for (var i = 0, len = arr.length; i < len; i++) {
             var doc = JSON.stringify(arr[i], null, "  ");
             var name = arr[i].name;
-            var thumbnail = arr[i].thumbnails[arr[i].thumbnails.length -1];
+            var thumbnail = JSON.stringify(arr[i].thumbnails[arr[i].thumbnails.length -1]);
             message = message + thumbnail;
           }          
         }
