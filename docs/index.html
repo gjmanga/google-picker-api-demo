@@ -97,7 +97,9 @@
           var arr = data[google.picker.Response.DOCUMENTS];
           for (var i = 0, len = arr.length; i < len; i++) {
             var doc = JSON.stringify(arr[i], null, "  ");
-            message = message + doc;
+            var name = arr[i].name;
+            var thumbnail = arr[i].thumbnails[arr[i].thumbnails.length -1];
+            message = message + thumbnail;
           }          
         }
         document.getElementById('result').innerHTML = message;
