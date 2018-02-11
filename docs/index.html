@@ -100,8 +100,11 @@
             var name = arr[i].name;
             var thumbnail = arr[i].thumbnails[0].url;
             if (name && thumbnail){
-              thumbnail = thumbnail.split(name)[0]+"s1600/"+name;
-            }              
+              thumbnail = thumbnail.split("s32-c")[0]+"s1600/"+name;
+            }
+            if (thumbnail){
+              thumbnail = "<img src='"+thumbnail+"'>";
+            }
             message = message + thumbnail;
           }          
         }
