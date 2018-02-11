@@ -94,7 +94,9 @@
         var message = '';
         var mangaAuthor = document.getElementById("mangaAuthor").value;
         var mangaName = document.getElementById("mangaName").value;
+        var language = document.getElementById("language").value;
         var mangaContentField = document.getElementById("mangaContent");
+        var mangaTitleField = document.getElementById("postTitle");
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var arr = data[google.picker.Response.DOCUMENTS];
           for (var i = 0, len = arr.length; i < len; i++) {
@@ -104,13 +106,14 @@
             if (name && thumbnail){
               thumbnail = thumbnail.split("s32-c")[0]+"s1600/"+name;
             }
-            if (thumbnail){
+            if (mangaAuthor && mangaName){
               thumbnail = "<img src='"+thumbnail+"' alt='"+mangaAuthor+" - "+mangaName+"'>";
             }
             message = message + thumbnail;
           }          
         }
         mangaContentField.value = message;
+        mangaTitleField.value = language+" "+mangaAuthor+" - "+mangaName;
       }
     </script>
   </head>
@@ -122,12 +125,25 @@
         <td><a href="#PHOTO_UPLOAD" id="PHOTO_UPLOAD"</a>Upload to Picasa Web Albums.</a></td>
       </tr>
       <tr>
+        <td rowspan="1">Language used</td>
+        <td>
+          <select name="language">
+            <option value="[正體中文]">繁體中文</option>
+            <option value="[簡體中文]">簡體中文</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
         <td rowspan="1">Name of manga</td>
         <td><input type="text" id="mangaName"></td>
       </tr>
       <tr>
         <td rowspan="1">Name of author</td>
         <td><input type="text" id="mangaAuthor"></td>
+      </tr>
+      <tr>
+        <td rowspan="1">Post Title</td>
+        <td><textarea type="text" id="postTitle"></textarea></td>
       </tr>
       <tr>
         <td rowspan="1">Post Content</td>
