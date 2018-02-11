@@ -120,30 +120,8 @@
     <script type="text/javascript">
       Array.prototype.forEach.call(document.querySelectorAll('#views a'), function (ele) {
         ele.onclick = function () {
-          var viewIds = {
-            "DOCS":   google.picker.ViewId.DOCS,
-            "DOCS_IMAGES": google.picker.ViewId.DOCS_IMAGES,
-            "DOCUMENTS": google.picker.ViewId.DOCUMENTS,
-            "PRESENTATIONS": google.picker.ViewId.PRESENTATIONS,
-            "SPREADSHEETS": google.picker.ViewId.SPREADSHEETS,
-            "FORMS": google.picker.ViewId.FORMS,
-            "DOCS_IMAGES_AND_VIDEOS": google.picker.ViewId.DOCS_IMAGES_AND_VIDEOS,
-            "DOCS_VIDEOS": google.picker.ViewId.DOCS_VIDEOS,
-            "FOLDERS": google.picker.ViewId.FOLDERS,
-            "PDFS": google.picker.ViewId.PDFS,
-            "DOCS_UPLOAD": new google.picker.DocsUploadView(),
-            "PHOTO_ALBUMS": google.picker.ViewId.PHOTO_ALBUMS,
-            "PHOTOS": google.picker.ViewId.PHOTOS,
-            "PHOTO_UPLOAD": google.picker.ViewId.PHOTO_UPLOAD,
-            "IMAGE_SEARCH": google.picker.ViewId.IMAGE_SEARCH,
-            "MAPS": google.picker.ViewId.MAPS,
-            "VIDEO_SEARCH": google.picker.ViewId.VIDEO_SEARCH,
-            "WEBCAM": google.picker.ViewId.WEBCAM,
-            "YOUTUBE": google.picker.ViewId.YOUTUBE,
-            "RECENTLY_PICKED": google.picker.ViewId.RECENTLY_PICKED
-          }
           var id = this.id;
-          var viewId = viewIds[id];
+          var viewId = google.picker.ViewId.PHOTO_UPLOAD;
           var setOAuthToken = true;
           
           if (id === 'IMAGE_SEARCH' || id === 'MAPS' || id === 'VIDEO_SEARCH') {
