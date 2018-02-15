@@ -92,6 +92,7 @@
       // A simple callback implementation.
       function pickerCallback(data) {
         var message = '';
+        console.log(data);
         var mangaAuthor = document.getElementById("mangaAuthor").value;
         var mangaName = document.getElementById("mangaName").value;
         var language = document.getElementById("language").value;
@@ -148,6 +149,10 @@
       <tr>
         <td rowspan="1">Post Content</td>
         <td><textarea type="text" id="mangaContent"></textarea></td>
+      </tr>
+      <tr>
+        <td rowspan="1">Server Response</td>
+        <td><textarea type="text" id="serverContent"></textarea></td>
       </tr>
     </table>
     
