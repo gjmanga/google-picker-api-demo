@@ -70,6 +70,8 @@
         if (authResult && !authResult.error) {
           oauthToken = authResult.access_token;
           //createPicker(viewIdForhandleAuthResult, true);
+          console.log(google);
+          console.log(gdata);
           var photoservice = new google.gdata.photos.service.PhotosService();
         }
       }
