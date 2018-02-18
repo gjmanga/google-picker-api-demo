@@ -16,8 +16,14 @@ function getQueryVariable(variable)
        }
        return(false);
 }
+
+const albumData = {
+  title: 'My first album',
+  summary: 'First album with Picasa API'
+}
+
 function onAuthFinished(accessToken){
-  picasa.getAlbums(accessToken, {}, (error, albums) => {
+  picasa.createAlbum(accessToken, albumData, (error, albums) => {
     console.log(error, albums);
   });
 }
@@ -47328,10 +47334,10 @@ module.exports = pbkdf2
 'use strict'
 
 const querystring = require('querystring')
-let request = require('request')
+var request = require('request')
 
 function executeRequest (method, requestOptions, callback) {
-  request[method](requestOptions, (error, response, body) => {
+  request[method](requestOptions, (error, response, body) => {    
     if (error) return callback(error)
 
     if (response.statusCode < 200 || response.statusCode > 226 ) {
@@ -47399,13 +47405,10 @@ function getAlbums (accessToken, options, callback) {
   const requestQuery = querystring.stringify(accessTokenParams)
 
   const requestOptions = {
-    url : `${PICASA_SCOPE}${PICASA_API_FEED_PATH}?${requestQuery}`,
-    headers: {
-      'GData-Version': '2'
-    }
+    url : `${PICASA_SCOPE}${PICASA_API_FEED_PATH}?${requestQuery}`
   }
 
-  this.executeRequest('get', requestOptions, (error, body) => {
+  this.executeRequest('POST', requestOptions, (error, body) => {
     if (error) return callback(error)
 
     const albums = body.feed.entry.map(
@@ -47425,7 +47428,9 @@ function deletePhoto (accessToken, albumId, photoId, callback) {
   const requestOptions = {
     url : `${PICASA_SCOPE}${PICASA_API_ENTRY_PATH}/albumid/${albumId}/photoid/${photoId}?${requestQuery}`,
     headers: {
-      'If-Match': '*'
+      'If-Match': '*',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     }
   }
 
@@ -47451,7 +47456,9 @@ function createAlbum (accessToken, albumData, callback) {
   const requestOptions = {
     url       : `${PICASA_SCOPE}${PICASA_API_FEED_PATH}?${requestQuery}`,
     body      : albumInfoAtom,
-    headers   : {'Content-Type': 'application/atom+xml'}
+    headers   : {'Content-Type': 'application/atom+xml',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",}
   }
 
   this.executeRequest('post', requestOptions, (error, body) => {
@@ -47510,7 +47517,10 @@ function getPhotos (accessToken, options, callback) {
   const requestOptions = {
     url : `${PICASA_SCOPE}${PICASA_API_FEED_PATH}${albumPart}?${requestQuery}`,
     headers: {
-      'GData-Version': '2'
+      'GData-Version': '2',
+  "Access-Control-Allow-Credentials": true,
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
     }
   }
 
