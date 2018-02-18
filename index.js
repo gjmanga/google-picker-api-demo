@@ -30,7 +30,7 @@ function onAuthFinished(accessToken){
 
 const config = {
   clientId     : '109035817291-llhrjjh1t11s507ee8aauc4393qdu7l0.apps.googleusercontent.com',
-  redirectURI  : 'http://localhost:3000/',
+  redirectURI  : 'https://gjmanga.github.io/uploader/',
   clientSecret : 'Oe651Y710-1ztEHdw1ntO_Ao'
 }
 
