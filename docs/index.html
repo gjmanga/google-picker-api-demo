@@ -47,12 +47,13 @@
       var gdataLoaded = false;
       var oauthToken;
       var viewIdForhandleAuthResult;
+      
+      google.load('gdata', '2', {'callback': onGdataLoad});
 
       // Use the API Loader script to load google.picker and gapi.auth.
       function onApiLoad() {
         gapi.load('auth', {'callback': onAuthApiLoad});
-        gapi.load('picker', {'callback': onPickerApiLoad});
-        gapi.load('gdata', {'callback': onGdataLoad});
+        gapi.load('picker', {'callback': onPickerApiLoad});        
       }
 
       function onAuthApiLoad() {
@@ -64,6 +65,7 @@
       }
       function onGdataLoad() {
         gdataLoaded = true;
+        console.log('gdata has been loaded!')
       }
 
       function handleAuthResult(authResult) {
@@ -174,6 +176,7 @@
 
     <!-- The Google API Loader script. -->
     <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       Array.prototype.forEach.call(document.querySelectorAll('#views a'), function (ele) {
         ele.onclick = function () {
