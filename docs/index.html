@@ -112,6 +112,7 @@
         var mangaTitleField = document.getElementById("postTitle");
         if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
           var arr = data[google.picker.Response.DOCUMENTS];
+          console.log(arr);
           for (var i = 0, len = arr.length; i < len; i++) {
             var doc = JSON.stringify(arr[i], null, "  ");
             var name = arr[i].name;
