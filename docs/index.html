@@ -105,8 +105,10 @@
       function pickerCallback(data) {
         var message = '';
         console.log(data);
-        var mangaAuthor = document.getElementById("mangaAuthor").value;
-        var mangaName = document.getElementById("mangaName").value;
+        var mangaAuthor = "";
+        mangaAuthor = document.getElementById("mangaAuthor").value;
+        var mangaName = "";
+        mangaName = document.getElementById("mangaName").value;
         var language = document.getElementById("language").value;
         var mangaContentField = document.getElementById("mangaContent");
         var mangaTitleField = document.getElementById("postTitle");
@@ -120,9 +122,7 @@
             if (name && thumbnail){
               thumbnail = thumbnail.split("s32-c")[0]+"s1600/"+name;
             }
-            if (mangaAuthor && mangaName){
-              thumbnail = "<img src='"+thumbnail+"' alt='"+mangaAuthor+" - "+mangaName+"'>";
-            }
+            thumbnail = "<img src='"+thumbnail+"' alt='"+mangaAuthor+" - "+mangaName+"'>";
             message = message + thumbnail;
           }          
         }
